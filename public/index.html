@@ -1,0 +1,461 @@
+<!-- public/index.html -->
+
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <title>Stock Market Simulation 2</title>
+  <script src="/socket.io/socket.io.js"></script>
+  <script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
+  <style>
+    /* Reset */
+    * {
+      box-sizing: border-box;
+      margin: 0;
+      padding: 0;
+    }
+
+    body {
+      font-family: Arial, sans-serif;
+      background-color: #f5f5f5;
+      padding: 20px;
+    }
+
+    h1, h2 {
+      text-align: center;
+      margin-bottom: 20px;
+    }
+
+    /* Responsive Chart Container */
+    .chart-container {
+      width: 80%; /* Set to 80% of parent container */
+      max-width: 1200px;
+      margin: 0 auto 40px auto;
+    }
+
+    /* Ensure the canvas fills the container */
+    .chart-container canvas {
+      width: 100% !important;
+      height: auto !important;
+    }
+
+    /* Stock Hall */
+    .stock-hall {
+      display: flex;
+      flex-wrap: wrap;
+      justify-content: center;
+    }
+
+    .stock-item {
+      flex: 1 1 calc(20% - 20px);
+      background-color: #fff;
+      margin: 10px;
+      padding: 15px;
+      border: 1px solid #ddd;
+      border-radius: 8px;
+      box-shadow: 0 2px 5px rgba(0,0,0,0.1);
+      min-width: 250px;
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+    }
+
+    .stock-item h3 {
+      margin-bottom: 10px;
+    }
+
+    .stock-item p {
+      margin-bottom: 5px;
+    }
+
+    /* Stock Charts */
+    .chart-wrapper {
+      width: 100%;
+      max-width: 400px;
+      height: 200px;
+      position: relative;
+      margin-bottom: 15px;
+    }
+
+    /* Tables */
+    table {
+      width: 100%;
+      border-collapse: collapse;
+      margin-bottom: 40px;
+    }
+
+    th, td {
+      padding: 10px;
+      border: 1px solid #ddd;
+      text-align: center;
+      vertical-align: middle;
+    }
+
+    th {
+      background-color: #f7f7f7;
+    }
+
+    /* Player Chart */
+    .player-chart-wrapper {
+      width: 100%;
+      height: 150px;
+      position: relative;
+    }
+
+    /* Responsive Adjustments */
+    @media (max-width: 1200px) {
+      .stock-item {
+        flex: 1 1 calc(33.33% - 20px);
+      }
+    }
+
+    @media (max-width: 800px) {
+      .stock-item {
+        flex: 1 1 calc(50% - 20px);
+      }
+    }
+
+    @media (max-width: 600px) {
+      .stock-item {
+        flex: 1 1 calc(100% - 20px);
+      }
+
+      .player-chart-wrapper {
+        height: 100px;
+      }
+    }
+
+    /* Hover Effects */
+    .stock-item:hover {
+      box-shadow: 0 4px 10px rgba(0,0,0,0.15);
+    }
+
+    tr:nth-child(even) {
+      background-color: #fafafa;
+    }
+
+    tr:hover {
+      background-color: #f1f1f1;
+    }
+
+    /* Chart Styling */
+    canvas {
+      display: block;
+    }
+
+  </style>
+</head>
+<body>
+
+  <h1>Stock Market Simulation 2</h1>
+
+  <h2>Market Wealth Over Time</h2>
+  <div class="chart-container">
+    <canvas id="marketWealthChart"></canvas>
+  </div>
+
+  <h2>Stock Hall</h2>
+  <div class="stock-hall" id="stockHall"></div>
+
+  <h2>Top 100 Players</h2>
+  <table id="player-table">
+    <thead>
+      <tr>
+        <th>Player ID</th>
+        <th>Status</th>
+        <th>Wealth</th>
+        <th>Stocks Holding</th>
+        <th>Total Wealth Chart</th>
+      </tr>
+    </thead>
+    <tbody id="playerTableBody"></tbody>
+  </table>
+
+  <script>
+    const socket = io();
+
+    let marketWealthChart;
+    const stockCharts = {};
+    let playerCharts = {};
+
+    socket.on('initialData', (data) => {
+      updateStocks(data.stocks);
+      updatePlayers(data.players);
+      updateMarketWealthChart(data.marketWealthHistory);
+      updateStocksData(data.stocks);
+    });
+
+    socket.on('stocksUpdate', (stocks) => {
+      updateStocks(stocks);
+      updateStocksData(stocks);
+    });
+
+    socket.on('playersUpdate', (players) => {
+      updatePlayers(players);
+    });
+
+    socket.on('marketWealthUpdate', (marketWealthHistory) => {
+      updateMarketWealthChart(marketWealthHistory);
+    });
+
+    socket.on('playersWealthUpdate', (players) => {
+      updatePlayers(players);
+    });
+
+    function updateStocks(stocks) {
+      const stockHall = document.getElementById('stockHall');
+
+      // Destroy existing stock charts before updating
+      Object.values(stockCharts).forEach((chart) => chart.destroy());
+      Object.keys(stockCharts).forEach((key) => delete stockCharts[key]);
+
+      // Clear the stock hall
+      stockHall.innerHTML = '';
+
+      // Recreate the stock hall content
+      stocks.forEach((stock) => {
+        const stockDiv = document.createElement('div');
+        stockDiv.className = 'stock-item';
+        stockDiv.innerHTML = `
+          <h3>${stock.name}</h3>
+          <p>Price: $${stock.price.toFixed(2)}</p>
+          <p>Shareholders: ${Object.keys(stock.holders).length}</p>
+          <div class="chart-wrapper">
+            <canvas id="priceChart-${stock.name}"></canvas>
+          </div>
+          <div class="chart-wrapper">
+            <canvas id="pieChart-${stock.name}"></canvas>
+          </div>
+        `;
+        stockHall.appendChild(stockDiv);
+
+        // Draw Price Line Chart
+        const priceCtx = document.getElementById(`priceChart-${stock.name}`).getContext('2d');
+        const times = stock.priceHistory.map((point) => new Date(point.time).toLocaleTimeString());
+        const prices = stock.priceHistory.map((point) => parseFloat(point.price.toFixed(2)));
+        stockCharts[stock.name] = new Chart(priceCtx, {
+          type: 'line',
+          data: {
+            labels: times,
+            datasets: [{
+              label: `${stock.name} Price`,
+              data: prices,
+              borderColor: getRandomColor(),
+              backgroundColor: 'rgba(0, 0, 0, 0)',
+              tension: 0.1,
+            }],
+          },
+          options: {
+            responsive: true,
+            maintainAspectRatio: false,
+            scales: {
+              x: {
+                ticks: {
+                  autoSkip: true,
+                  maxTicksLimit: 5,
+                },
+              },
+              y: {
+                beginAtZero: false,
+              },
+            },
+            plugins: {
+              legend: {
+                display: false,
+              },
+            },
+          },
+        });
+
+        // Draw Pie Chart
+        const pieCtx = document.getElementById(`pieChart-${stock.name}`).getContext('2d');
+        const holderData = [];
+        const holderLabels = [];
+        Object.entries(stock.holders).forEach(([playerId, qty]) => {
+          holderLabels.push(`Player ${playerId}`);
+          holderData.push(qty);
+        });
+        // Include Market Holdings
+        const marketHolding = stock.quantity;
+        if (marketHolding > 0) {
+          holderLabels.push('Market');
+          holderData.push(marketHolding);
+        }
+        new Chart(pieCtx, {
+          type: 'pie',
+          data: {
+            labels: holderLabels,
+            datasets: [{
+              data: holderData,
+              backgroundColor: holderLabels.map(() => getRandomColor()),
+            }],
+          },
+          options: {
+            responsive: true,
+            maintainAspectRatio: false,
+            plugins: {
+              legend: {
+                position: 'bottom',
+              },
+            },
+          },
+        });
+      });
+    }
+
+    function updatePlayers(players) {
+      const playerTableBody = document.getElementById('playerTableBody');
+
+      // Destroy existing player charts and clear the chart instances
+      Object.values(playerCharts).forEach((chart) => chart.destroy());
+      playerCharts = {}; // Reset the playerCharts object
+
+      // Clear the table body
+      playerTableBody.innerHTML = '';
+
+      // Sort players by wealth
+      const topPlayers = players.slice().sort((a, b) => {
+        const aWealth = a.wealthHistory[a.wealthHistory.length - 1]?.wealth || a.wealth;
+        const bWealth = b.wealthHistory[b.wealthHistory.length - 1]?.wealth || b.wealth;
+        return bWealth - aWealth;
+      }).slice(0, 100);
+
+      // Build the table rows
+      topPlayers.forEach((player) => {
+        const tr = document.createElement('tr');
+        const stocksHolding = Object.entries(player.stocks).map(([stockName, qty]) => `${stockName}: ${qty}`).join(', ');
+        tr.innerHTML = `
+          <td>${player.id}</td>
+          <td>${player.status}</td>
+          <td>$${(player.wealth + calculateHoldingsValue(player)).toFixed(2)}</td>
+          <td>${stocksHolding || 'None'}</td>
+          <td>
+            <div class="player-chart-wrapper">
+              <canvas id="playerChart-${player.id}" class="player-chart"></canvas>
+            </div>
+          </td>
+        `;
+        playerTableBody.appendChild(tr);
+      });
+
+      // Initialize charts after DOM update
+      topPlayers.forEach((player) => {
+        const canvas = document.getElementById(`playerChart-${player.id}`);
+        if (canvas) {
+          const ctx = canvas.getContext('2d');
+          const times = player.wealthHistory.map((point) => new Date(point.time).toLocaleTimeString());
+          const wealths = player.wealthHistory.map((point) => parseFloat(point.wealth.toFixed(2)));
+          playerCharts[player.id] = new Chart(ctx, {
+            type: 'line',
+            data: {
+              labels: times,
+              datasets: [{
+                label: `Player ${player.id} Wealth`,
+                data: wealths,
+                borderColor: getRandomColor(), // Random color for each player
+                backgroundColor: 'rgba(0, 0, 0, 0)',
+                tension: 0.1,
+              }],
+            },
+            options: {
+              responsive: true,
+              maintainAspectRatio: false,
+              scales: {
+                x: {
+                  ticks: {
+                    autoSkip: true,
+                    maxTicksLimit: 5,
+                  },
+                },
+                y: {
+                  beginAtZero: false,
+                },
+              },
+              plugins: {
+                legend: {
+                  display: false,
+                },
+              },
+            },
+          });
+        }
+      });
+    }
+
+    function updateMarketWealthChart(history) {
+      const times = history.map((point) => new Date(point.time).toLocaleTimeString());
+      const wealths = history.map((point) => parseFloat(point.wealth.toFixed(2)));
+      if (!marketWealthChart) {
+        const ctx = document.getElementById('marketWealthChart').getContext('2d');
+        marketWealthChart = new Chart(ctx, {
+          type: 'line',
+          data: {
+            labels: times,
+            datasets: [{
+              label: 'Market Wealth',
+              data: wealths,
+              borderColor: 'blue',
+              backgroundColor: 'rgba(0, 0, 0, 0)',
+              tension: 0.1,
+            }],
+          },
+          options: {
+            responsive: true,
+            maintainAspectRatio: false,
+            scales: {
+              x: {
+                ticks: {
+                  autoSkip: true,
+                  maxTicksLimit: 10,
+                },
+              },
+              y: {
+                beginAtZero: false,
+              },
+            },
+            plugins: {
+              legend: {
+                display: true,
+                position: 'top',
+              },
+            },
+          },
+        });
+      } else {
+        marketWealthChart.data.labels = times;
+        marketWealthChart.data.datasets[0].data = wealths;
+        marketWealthChart.update();
+      }
+    }
+
+    function calculateHoldingsValue(player) {
+      let holdingsValue = 0;
+      for (let stockName in player.stocks) {
+        let qty = player.stocks[stockName];
+        let stock = window.stocks.find((s) => s.name === stockName);
+        holdingsValue += qty * stock.price;
+      }
+      return holdingsValue;
+    }
+
+    // Function to generate a random color (used for player charts and stock charts)
+    function getRandomColor() {
+      const letters = '0123456789ABCDEF';
+      let color = '#';
+      for (let i = 0; i < 6; i++) {
+        color += letters[Math.floor(Math.random() * 16)];
+      }
+      return color;
+    }
+
+    // Store stocks globally for access in other functions
+    window.stocks = [];
+
+    function updateStocksData(stocks) {
+      window.stocks = stocks;
+    }
+
+  </script>
+
+</body>
+</html>
