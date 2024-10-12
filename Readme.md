@@ -1,3 +1,7 @@
+# The main problem with the current version
+
+Players buy and sell randomly with no holding time, so wealth changes little and is lower than initial wealth
+
 # Stock Market Simulation 2
 
 Welcome to **Stock Market Simulation 2**, an interactive web application that emulates a dynamic stock market environment with automated players engaging in trading activities. Leveraging real-time data updates and responsive visualizations, this simulation offers an engaging and educational experience for users interested in understanding the mechanics of stock trading and market dynamics.
@@ -345,7 +349,7 @@ Contributions are welcome! If you'd like to enhance the simulation or fix bugs, 
     ```
     git@github.com:DavidShawCn/Stock_Market_Game_2.git
     ```
-    
+
     
 3. **Create a New Branch创建一个新分支**
     
