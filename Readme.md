@@ -1,404 +1,533 @@
-# Stock Market Simulation 2
+# Stock Market Simulation 2.1
 
-Welcome to **Stock Market Simulation 2**, an interactive web application that emulates a dynamic stock market environment with automated players engaging in trading activities. Leveraging real-time data updates and responsive visualizations, this simulation offers an engaging and educational experience for users interested in understanding the mechanics of stock trading and market dynamics.
+Category: Game
+Status: Primary
 
-欢迎使用**股票市场模拟 2** ，这是一个交互式 Web 应用程序，可模拟动态股票市场环境，并由自动玩家参与交易活动。利用实时数据更新和响应式可视化，该模拟为有兴趣了解股票交易机制和市场动态的用户提供了引人入胜的教育体验。
+Welcome to the **Stock Market Simulator**! This application simulates a stock market environment with automated traders (autoplayers). Users can configure various parameters, observe stock price movements, and monitor the performance of autoplayers in real-time.欢迎来到**股市模拟器**！该应用程序模拟具有自动交易者（自动播放器）的股票市场环境。用户可以配置各种参数，观察股价走势，实时监控自动播放器的表现。
 
-
-# stock market simulation 2
-
-- **特拉诺瓦解决方案**
-    - **Industry:** Renewable Energy & Sustainability
-        
-        **行业：**可再生能源与可持续发展
-        
-- **QuantumEdge Technologies (QETC)**
-- **量子边缘技术公司**
-    - **Industry:** Advanced Computing & Artificial Intelligence
-        
-        **行业：**先进计算与人工智能
-        
-- **AstraGlobal Holdings (AGHL)**
-- **阿斯特拉全球控股公司**
-    - **Industry:** Aerospace & Space Exploration
-        
-        **行业：**航空航天与太空探索
-        
-- **OmniCore Industries (OMCI)**
-- **全核工业**
-    - **Industry:** Manufacturing & Automation
-        
-        **行业：**制造与自动化
-        
-- **EcoSphere Dynamics (ESDY)**
-- **生态圈动态**
-    - **Industry:** Environmental Technology
-        
-        **行业：**环境技术
-        
-- **PinnacleX Corporation (PNXL)**
-- **PinnacleX 公司**
-    - **Industry:** Financial Technology (FinTech)
-        
-        **行业：**金融科技（FinTech）
-        
-- **NeuroLink Systems (NLKS)**
-- **神经链接系统**
-    - **Industry:** Biotechnology & Healthcare
-        
-        **行业：**生物技术与医疗保健
-        
-- **Vanguard Horizons (VNHD)**
-- **先锋地平线**
-    - **Industry:** Transportation & Autonomous Vehicles
-        
-        **行业：**交通运输和自动驾驶车辆
-        
-- **FusionWave Enterprises (FWE)**
-- **融合波企业**
-    - **Industry:** Telecommunications & 5G Technologies
-        
-        **行业：**电信和 5G 技术
-        
-- **ElevateX Innovations (ELVX)**
-- **ElevateX创新**
-    - **Industry:** Education Technology & E-Learning
-        
-        **行业：**教育技术和电子学习
-        
-
+---
 
 ## Table of Contents目录
 
-- [Features特征](https://www.notion.so/stock-market-simulation-2-11d49a548009800296fbe57758b3ded1?pvs=21)
-- [Technologies Used使用的技术](https://www.notion.so/stock-market-simulation-2-11d49a548009800296fbe57758b3ded1?pvs=21)
-- [Installation安装](https://www.notion.so/stock-market-simulation-2-11d49a548009800296fbe57758b3ded1?pvs=21)
-- [Usage用法](https://www.notion.so/stock-market-simulation-2-11d49a548009800296fbe57758b3ded1?pvs=21)
-- [Project Structure项目结构](https://www.notion.so/stock-market-simulation-2-11d49a548009800296fbe57758b3ded1?pvs=21)
-- [Contributing贡献](https://www.notion.so/stock-market-simulation-2-11d49a548009800296fbe57758b3ded1?pvs=21)
-- [License执照](https://www.notion.so/stock-market-simulation-2-11d49a548009800296fbe57758b3ded1?pvs=21)
-- [Acknowledgments致谢](https://www.notion.so/stock-market-simulation-2-11d49a548009800296fbe57758b3ded1?pvs=21)
+1. [Introduction介绍](https://www.notion.so/Stock-Market-Simulation-2-1-12049a54800980d28e27cd7b4b5485f6?pvs=21)
+2. [Features特征](https://www.notion.so/Stock-Market-Simulation-2-1-12049a54800980d28e27cd7b4b5485f6?pvs=21)
+3. [Technology Stack技术栈](https://www.notion.so/Stock-Market-Simulation-2-1-12049a54800980d28e27cd7b4b5485f6?pvs=21)
+4. [Project Structure项目结构](https://www.notion.so/Stock-Market-Simulation-2-1-12049a54800980d28e27cd7b4b5485f6?pvs=21)
+5. [Setup and Installation设置和安装](https://www.notion.so/Stock-Market-Simulation-2-1-12049a54800980d28e27cd7b4b5485f6?pvs=21)
+6. [Usage用法](https://www.notion.so/Stock-Market-Simulation-2-1-12049a54800980d28e27cd7b4b5485f6?pvs=21)
+7. [Code Overview代码概述](https://www.notion.so/Stock-Market-Simulation-2-1-12049a54800980d28e27cd7b4b5485f6?pvs=21)
+    - [Backend后端](https://www.notion.so/Stock-Market-Simulation-2-1-12049a54800980d28e27cd7b4b5485f6?pvs=21)
+    - [Frontend前端](https://www.notion.so/Stock-Market-Simulation-2-1-12049a54800980d28e27cd7b4b5485f6?pvs=21)
+8. [API EndpointsAPI端点](https://www.notion.so/Stock-Market-Simulation-2-1-12049a54800980d28e27cd7b4b5485f6?pvs=21)
+9. [Error Handling错误处理](https://www.notion.so/Stock-Market-Simulation-2-1-12049a54800980d28e27cd7b4b5485f6?pvs=21)
+10. [Future Enhancements未来的增强功能](https://www.notion.so/Stock-Market-Simulation-2-1-12049a54800980d28e27cd7b4b5485f6?pvs=21)
+11. [Contributing贡献](https://www.notion.so/Stock-Market-Simulation-2-1-12049a54800980d28e27cd7b4b5485f6?pvs=21)
+12. [License执照](https://www.notion.so/Stock-Market-Simulation-2-1-12049a54800980d28e27cd7b4b5485f6?pvs=21)
+
+---
+
+## Introduction介绍
+
+The **Stock Market Simulator** is a full-stack application that provides a simulated stock market environment. Users can:**股票市场模拟器**是一个全栈应用程序，提供模拟股票市场环境。用户可以：
+
+- Configure simulation parameters such as stock quantities, autoplayer counts, price ranges, initial cash amounts, and simulation speed.
+    
+    配置模拟参数，例如库存数量、自动播放器数量、价格范围、初始现金金额和模拟速度。
+    
+- Start and stop the simulation at any time.
+    
+    随时开始和停止模拟。
+    
+- View real-time updates of stock prices, including historical price charts.
+    
+    查看股票价格的实时更新，包括历史价格图表。
+    
+- Monitor the portfolios and activities of automated traders (autoplayers).
+    
+    监控自动交易者（自动玩家）的投资组合和活动。
+    
+
+---
 
 ## Features特征
 
-### 1. **Dynamic Stock Market Simulation**1.**动态股市模拟**
-
-- **Multiple Stocks:** Simulate 10 distinct stocks, each with unique behaviors and price fluctuations.
+- **User-Configurable Parameters**: Set ranges for stock shares, autoplayer counts, issue prices, initial cash amounts, and simulation speed.
     
-    **多种股票：**模拟 10 只不同的股票，每只都有独特的行为和价格波动。
+    **用户可配置参数**：设置股票份额、自动玩家数量、发行价格、初始现金金额和模拟速度的范围。
     
-- **Real-Time Price Updates:** Stock prices update every 10 seconds based on simulated market transactions.
+- **Randomized Simulation**: Parameters are generated randomly within specified ranges at the start of the simulation.
     
-    **实时价格更新：**股票价格根据模拟市场交易每 10 秒更新一次。
+    **随机模拟**：参数在模拟开始时在指定范围内随机生成。
     
-- **Price History Charts:** Visualize stock price movements over time using interactive line charts.
+- **Real-Time Data**: View live updates of stock prices, autoplayer portfolios, and market trends.
     
-    **价格历史图表：**使用交互式折线图可视化股票价格随时间的变动。
+    **实时数据**：查看实时更新的股票价格、自动播放器投资组合和市场趋势。
     
-- **Shareholder Distribution:** View the distribution of stock holdings among players and the market through pie charts.
+- **Historical Price Charts**: Visualize stock price history using interactive line charts.
     
-    **股东分布：**通过饼图查看玩家和市场的持股分布情况。
+    **历史价格图表**：使用交互式折线图可视化股票价格历史记录。
     
-
-### 2. **Automated Players (Bots)**2.**自动化玩家（Bot）**
-
-- **Player Generation:** Automatically generate 5-10 new players every 30 seconds, each with initial wealth ranging from $1,000 to $5,000.
+- **Start/Stop Simulation**: Control the simulation's execution through intuitive UI controls.
     
-    **玩家生成：**每30秒自动生成5-10名新玩家，每个玩家初始财富从1,000美元到5,000美元不等。
+    **开始/停止模拟**：通过直观的 UI 控件控制模拟的执行。
     
-- **Trading Behavior:** Players engage in buying and selling stocks based on randomized decisions, mimicking real-world trading behaviors.
+- **Adjustable Speed**: Modify the simulation speed by setting the time interval between actions.
     
-    **交易行为：**玩家根据随机决策进行股票买卖，模仿现实世界的交易行为。
+    **可调速度**：通过设置动作之间的时间间隔来修改模拟速度。
     
-- **Wealth Tracking:** Monitor each player's total wealth, which includes cash and the value of their stock holdings, updated every 3 seconds.
+- **Error Handling**: Comprehensive error handling on both frontend and backend ensures smooth operation and user feedback.
     
-    **财富追踪：**监控每个玩家的总财富，包括现金和所持股票的价值，每 3 秒更新一次。
-    
-- **Status Management:** Players can be in one of three states: "active," "out," or "retired." Players retire after selling all their holdings and purchasing at least one share.
-    
-    **状态管理：**玩家可以处于三种状态之一：“活跃”、“退出”或“退役”。玩家在出售所有股份并购买至少一股股票后退休。
+    **错误处理**：前端和后端的全面错误处理确保平稳运行和用户反馈。
     
 
-### 3. **Market Wealth Tracking**3.**市场财富追踪**
+---
 
-- **Comprehensive Calculation:** Total market wealth is computed every 10 seconds, considering the sum of all stocks' values.
-    
-    **综合计算：**每10秒计算一次市场总财富，考虑所有股票价值的总和。
-    
-- **Wealth History Visualization:** Track and visualize the evolution of market wealth over time with a dedicated line chart.
-    
-    **财富历史可视化：**使用专用折线图跟踪和可视化市场财富随时间的演变。
-    
+## Technology Stack技术栈
 
-### 4. **Interactive User Interface**4.**交互式用户界面**
-
-- **Responsive Design:** The application adapts seamlessly to various screen sizes, ensuring optimal usability on desktops, tablets, and mobile devices.
+- **Backend**: Node.js, Express.js
     
-    **响应式设计：**该应用程序无缝适应各种屏幕尺寸，确保在台式机、平板电脑和移动设备上实现最佳可用性。
+    **后端**：Node.js、Express.js
     
-- **Real-Time Updates:** Utilize Socket.IO for real-time data transmission between the server and clients, ensuring that all visualizations reflect the latest market and player data.
+- **Frontend**: React.js, React Router v6, Recharts, Bootstrap
     
-    **实时更新：**利用Socket.IO在服务器和客户端之间进行实时数据传输，确保所有可视化反映最新的市场和玩家数据。
+    **前端**：React.js、React Router v6、Recharts、Bootstrap
     
-- **Chart.js Integration:** Employ Chart.js for rendering interactive and responsive charts, enhancing data visualization and user engagement.
+- **Communication**: RESTful API using Fetch API
     
-    **Chart.js 集成：**使用 Chart.js 呈现交互式和响应式图表，增强数据可视化和用户参与度。
+    **通信**：使用 Fetch API 的 RESTful API
+    
+- **Languages**: JavaScript (ES6+)
+    
+    **语言**：JavaScript (ES6+)
     
 
-## Technologies Used使用的技术
+---
 
-- **Server-Side:服务器端：**
-    - [Node.js](https://nodejs.org/): JavaScript runtime environment for building the server.
-        
-        [Node .js](https://nodejs.org/) ：用于构建服务器的 JavaScript 运行时环境。
-        
-    - [Express.js](https://expressjs.com/): Web framework for handling HTTP requests and serving static files.
-        
-        [Express .js](https://expressjs.com/) ：用于处理 HTTP 请求和提供静态文件的 Web 框架。
-        
-    - [Socket.IO](https://socket.io/): Enables real-time, bidirectional communication between the server and clients.
-        
-        [Socket .IO](https://socket.io/) ：实现服务器和客户端之间的实时、双向通信。
-        
-- **Client-Side:客户端：**
-    - **HTML5 & CSS3:** Structures and styles the web pages.
-        
-        **HTML5 和 CSS3：**网页的结构和样式。
-        
-    - **JavaScript:** Implements client-side logic and interactivity.
-        
-        **JavaScript：**实现客户端逻辑和交互性。
-        
-    - [Chart.js](https://www.chartjs.org/): Renders responsive and interactive charts for data visualization.
-        
-        [Chart .js](https://www.chartjs.org/) ：呈现响应式和交互式图表以实现数据可视化。
-        
-    - [Socket.IO Client](https://socket.io/): Facilitates real-time data updates from the server.
-        
-        [Socket .IO Client](https://socket.io/) ：促进服务器的实时数据更新。
-        
+## Project Structure项目结构
 
-## Installation安装
+### Backend (`stock-simulator/`)后端（ `stock-simulator/` ）
 
-Follow these steps to set up and run **Stock Market Simulation 2** on your local machine.按照以下步骤在本地计算机上设置并运行**股票市场模拟 2** 。
+```css
+css
+Copy code
+stock-simulator/
+├── app.js
+├── models/
+│   ├── Autoplayer.js
+│   ├── Strategy.js
+│   ├── Stock.js
+│   ├── Trader.js
+│   ├── Brokerage.js
+│   ├── Market.js
+│   ├── Order.js
+│   ├── BuyOrder.js
+│   └── SellOrder.js
+├── routes/
+│   └── api.js
+├── controllers/
+│   └── simulationController.js
+└── package.json
+
+```
+
+### Frontend (`stock-simulator-client/`)前端（ `stock-simulator-client/` ）
+
+```java
+java爪哇
+Copy code
+stock-simulator-client/
+├── src/
+│   ├── components/
+│   │   ├── App.js
+│   │   ├── Navbar.js
+│   │   ├── SimulationControl.js
+│   │   ├── Stocks.js
+│   │   ├── StocksList.js
+│   │   ├── StockPriceChart.js
+│   │   ├── Autoplayers.js
+│   │   ├── AutoplayerList.js
+│   │   └── OverviewData.js
+│   ├── index.js
+│   └── App.css
+├── public/
+│   ├── index.html
+│   └── ...
+├── package.json
+└── ...
+
+```
+
+---
+
+## Setup and Installation设置和安装
 
 ### Prerequisites先决条件
 
-- **Node.js & npm:** Ensure that you have Node.js and npm installed. You can download them from [here](https://nodejs.org/).
+- Node.js (v12.x or higher)
     
-    **Node.js 和 npm：**确保安装了 Node.js 和 npm。您可以从[这里](https://nodejs.org/)下载它们。
+    Node.js（v12.x 或更高版本）
+    
+- npm (v6.x or higher)
+    
+    npm（v6.x 或更高版本）
     
 
-### Steps步骤
+### Backend Setup后端设置
 
-1. **Clone the Repository克隆存储库**
+1. **Clone the repository** (or download the source code):**克隆存储库**（或下载源代码）：
     
     ```bash
-    git clone https://github.com/your-username/stock-market-simulation-2.git
+    git clone https://github.com/yourusername/stock-market-simulator.git
     ```
     
-2. **Navigate to the Project Directory导航到项目目录**
+2. **Navigate to the backend directory**:**导航到后端目录**：
     
     ```bash
-    cd stock-market-simulation-2
+    cd stock-market-simulator/stock-simulator
     ```
     
-3. **Install Dependencies安装依赖项**
+3. **Install dependencies**:**安装依赖项**：
     
     ```bash
     npm install
     ```
     
-4. **Start the Server启动服务器**
+4. **Start the backend server**:**启动后端服务器**：
     
     ```bash
-    node server.js
+    node app.js
     ```
     
-    The server will start on port `3000` by default. You can change the port by setting the `PORT` environment variable.默认情况下，服务器将在端口`3000`上启动。您可以通过设置`PORT`环境变量来更改端口。
-    
-5. **Access the Application访问应用程序**
-    
-    Open your web browser and navigate to http://localhost:3000 to view the simulation.打开 Web 浏览器并导航到http ://localhost :3000以查看模拟。
+    The backend server should now be running on `http://localhost:3001`.后端服务器现在应该在`http://localhost:3001`上运行。
     
 
-## Usage用法
+### Frontend Setup前端设置
 
-Upon accessing the application, you'll be greeted with an interactive dashboard that includes:访问该应用程序后，您将看到一个交互式仪表板，其中包括：
-
-1. **Market Wealth Over Time:随着时间的推移市场财富：**
-    - A line chart displaying the total wealth of the market, updating every 10 seconds.
-        
-        显示市场总财富的折线图，每 10 秒更新一次。
-        
-2. **Stock Hall:股票大厅：**
-    - Displays all available stocks with their current prices and number of shareholders.
-        
-        显示所有可用股票及其当前价格和股东数量。
-        
-    - Each stock includes:
-        
-        每只股票包括：
-        
-        - **Price Line Chart:** Visualizes the price history of the stock.
-            
-            **价格折线图：**可视化股票的价格历史。
-            
-        - **Shareholder Pie Chart:** Shows the distribution of stock holdings among players and the market.
-            
-            **股东饼图：**显示玩家和市场之间的持股分布。
-            
-3. **Top 100 Players:前 100 名玩家：**
-    - A table listing the top 100 players based on their total wealth.
-        
-        根据总财富列出前 100 名玩家的表格。
-        
-    - Each player entry includes:
-        
-        每个玩家条目包括：
-        
-        - **Player ID玩家ID**
-        - **Status:** Active, Out, or Retired.
-            
-            **状态：**活跃、退出或退休。
-            
-        - **Wealth:** Total cash plus the value of stock holdings.
-            
-            **财富：**现金总额加上所持股票的价值。
-            
-        - **Stocks Holding:** Detailed list of stocks and quantities held.
-            
-            **持有股票：**持有股票和数量的详细列表。
-            
-        - **Total Wealth Chart:** Line chart showing the player's wealth progression over time.
-            
-            **总财富图表：**显示玩家随时间的财富进展的折线图。
-            
-
-### Interacting with the Simulation与模拟交互
-
-- **Real-Time Updates:** All charts and tables update in real-time, reflecting the latest market transactions and player activities.
-    
-    **实时更新：**所有图表和表格实时更新，反映最新的市场交易和玩家活动。
-    
-- **Responsive Design:** The interface adjusts to different screen sizes, ensuring optimal viewing on various devices.
-    
-    **响应式设计：**界面可适应不同的屏幕尺寸，确保在各种设备上获得最佳观看效果。
-    
-
-## Project Structure项目结构
-
-```bash
-stock-market-simulation-2/
-├── public/
-│   ├── index.html
-│   ├── styles.css
-│   └── script.js
-├── server.js
-├── package.json
-└── README.md
-```
-
-- **public/**: Contains all client-side files.
-    
-    **public/** ：包含所有客户端文件。
-    
-    - **index.html**: Main HTML file rendering the dashboard.
-        
-        **index.html** ：呈现仪表板的主要 HTML 文件。
-        
-    - **styles.css**: Stylesheet for the application.
-        
-        **styles.css** ：应用程序的样式表。
-        
-    - **script.js**: Client-side JavaScript handling Socket.IO connections and chart rendering.
-        
-        **script.js** ：处理 Socket.IO 连接和图表渲染的客户端 JavaScript。
-        
-- **server.js**: Server-side script managing stock and player data, handling real-time updates via Socket.IO.
-    
-    **server.js** ：管理股票和玩家数据的服务器端脚本，通过 Socket.IO 处理实时更新。
-    
-- **package.json**: Contains project metadata and dependencies.
-    
-    **package.json** ：包含项目元数据和依赖项。
-    
-- **README.md**: Documentation for the project.
-    
-    **README.md** ：该项目的文档。
-    
-
-## Contributing贡献
-
-Contributions are welcome! If you'd like to enhance the simulation or fix bugs, please follow these steps:欢迎贡献！如果您想增强模拟或修复错误，请按照以下步骤操作：
-
-1. **Fork the Repository分叉存储库**
-    
-    Click the "Fork" button at the top-right corner of the repository page to create a personal copy.单击存储库页面右上角的“分叉”按钮以创建个人副本。
-    
-2. **Clone Your Fork克隆你的叉子**
+1. **Navigate to the frontend directory**:**导航到前端目录**：
     
     ```bash
-    git clone https://github.com/DavidShawCn/Stock_Market_Game_2.git
-    ```
-    or
-    ```
-    git@github.com:DavidShawCn/Stock_Market_Game_2.git
+    cd ../stock-simulator-client
     ```
     
-    
-3. **Create a New Branch创建一个新分支**
+2. **Install dependencies**:**安装依赖项**：
     
     ```bash
-    git checkout -b feature/your-feature-name
+    npm install
     ```
     
-4. **Make Your Changes做出你的改变**
-    
-    Implement your feature or bug fix.实施您的功能或错误修复。
-    
-5. **Commit Your Changes提交您的更改**
+3. **Start the frontend application**:**启动前端应用程序**：
     
     ```bash
-    git commit -m "Add feature: Your feature description"
+    npm start
     ```
     
-6. **Push to Your Fork推到你的叉子上**
-    
-    ```bash
-    git push origin feature/your-feature-name
-    ```
-    
-7. **Create a Pull Request创建拉取请求**
-    
-    Navigate to your forked repository on GitHub and click the "Compare & pull request" button to submit your changes.导航到 GitHub 上的分叉存储库，然后单击“比较和拉取请求”按钮以提交更改。
-    
-
-## License执照
-
-This project is licensed under the MIT License. Feel free to use, modify, and distribute it as per the license terms.该项目根据MIT许可证获得许可。请按照许可条款随意使用、修改和分发它。
-
-## Acknowledgments致谢
-
-- [**Chart.js](https://www.chartjs.org/):** For providing an easy-to-use charting library.
-    
-    [**Chart .js](https://www.chartjs.org/) ：**用于提供易于使用的图表库。
-    
-- [**Socket.IO](https://socket.io/):** For enabling real-time, bidirectional communication between clients and the server.
-    
-    [**Socket .IO](https://socket.io/) ：**用于实现客户端和服务器之间的实时、双向通信。
-    
-- [**Node.js](https://nodejs.org/):** For powering the server-side of the application.
-    
-    [**Node .js](https://nodejs.org/) ：**用于为应用程序的服务器端提供动力。
-    
-- [**Express.js](https://expressjs.com/):** For simplifying server setup and routing.
-    
-    [**Express .js](https://expressjs.com/) ：**用于简化服务器设置和路由。
+    The frontend application should now be running on `http://localhost:3000`.前端应用程序现在应该在`http://localhost:3000`上运行。
     
 
 ---
 
-Thank you for using **Stock Market Simulation 2**! If you encounter any issues or have suggestions for improvements, please feel free to open an issue or submit a pull request.感谢您使用**股市模拟2** ！如果您遇到任何问题或有改进建议，请随时提出问题或提交拉取请求。
+## Usage用法
 
-Happy Trading!交易愉快！
+1. **Access the Application**: Open your web browser and navigate to `http://localhost:3000`.**访问应用程序**：打开 Web 浏览器并导航至`http://localhost:3000` 。
+2. **Set Simulation Parameters**:**设置模拟参数**：
+    - Adjust the parameters in the **Simulation Control** form according to your preferences.
+        
+        根据您的喜好调整**模拟控制**表单中的参数。
+        
+    - Parameters include ranges for stock shares, autoplayer counts, issue prices, initial cash amounts, and the simulation speed.
+        
+        参数包括股票份额范围、自动玩家数量、发行价格、初始现金金额和模拟速度。
+        
+3. **Start the Simulation**:**开始模拟**：
+    - Click the **"Start Simulation"** button.
+        
+        单击**“开始模拟”**按钮。
+        
+    - The simulation will begin, and data will start updating in real-time.
+        
+        模拟将开始，数据将开始实时更新。
+        
+4. **Navigate Between Pages**:**在页面之间导航**：
+    - Use the navigation bar at the top to switch between the **Stocks** and **Autoplayers** pages.
+        
+        使用顶部的导航栏在“**股票”**和**“自动玩家”**页面之间切换。
+        
+5. **Monitor the Simulation**:**监控模拟**：
+    - **Stocks Page**: View stock price history charts and current prices.
+        
+        **股票页面**：查看股票价格历史图表和当前价格。
+        
+    - **Autoplayers Page**: Monitor the portfolios and cash positions of autoplayers.
+        
+        **自动玩家页面**：监控自动玩家的投资组合和现金头寸。
+        
+6. **Stop the Simulation**:**停止模拟**：
+    - Click the **"Stop Simulation"** button to halt the simulation.
+        
+        单击**“停止模拟”**按钮可停止模拟。
+        
+7. **Adjust Parameters and Restart**:**调整参数并重启**：
+    - You can adjust the parameters and start the simulation again to observe different scenarios.
+        
+        您可以调整参数并再次启动模拟来观察不同的场景。
+        
+
+---
+
+## Code Overview代码概述
+
+### Backend后端
+
+### `app.js`
+
+The entry point of the backend application:后端应用程序的入口点：
+
+- Sets up the Express server.
+    
+    设置 Express 服务器。
+    
+- Configures middleware, including CORS and JSON parsing.
+    
+    配置中间件，包括CORS和JSON解析。
+    
+- Defines the API routes.
+    
+    定义 API 路由。
+    
+
+### `models/`
+
+Contains all the class definitions:包含所有类定义：
+
+- **Autoplayer.js**: Represents an automated trader.
+    
+    **Autoplayer.js** ：代表自动交易者。
+    
+- **Strategy.js**: Encapsulates trading strategies.
+    
+    **Strategy.js** ：封装交易策略。
+    
+- **Stock.js**: Represents a stock in the market.
+    
+    **Stock.js** ：代表市场上的一只股票。
+    
+- **Trader.js**: Handles the order matching for a particular stock.
+    
+    **Trader.js** ：处理特定股票的订单匹配。
+    
+- **Brokerage.js**: Manages the initial shares and trades at varying prices.
+    
+    **Brokerage.js** ：管理初始股票并以不同的价格进行交易。
+    
+- **Market.js**: Manages the overall market, including multiple stocks and traders.
+    
+    **Market.js** ：管理整个市场，包括多个股票和交易者。
+    
+- **Order.js**, **BuyOrder.js**, **SellOrder.js**: Define the order structures.
+    
+    **Order.js** 、 **BuyOrder.js** 、 **SellOrder.js** ：定义订单结构。
+    
+
+### `controllers/simulationController.js`
+
+Handles API requests related to the simulation:处理与模拟相关的 API 请求：
+
+- **startSimulation**: Initializes and starts the simulation based on user parameters.
+    
+    **startSimulation** ：根据用户参数初始化并启动模拟。
+    
+- **stopSimulation**: Stops the ongoing simulation.
+    
+    **stopSimulation** ：停止正在进行的模拟。
+    
+- **getSimulationData**: Provides real-time data to the frontend.
+    
+    **getSimulationData** ：向前端提供实时数据。
+    
+- **updateParameters**: Allows updating of simulation parameters (if implemented).
+    
+    **updateParameters** ：允许更新模拟参数（如果实现）。
+    
+
+### `routes/api.js`
+
+Defines the API endpoints and maps them to controller functions.定义 API 端点并将它们映射到控制器功能。
+
+---
+
+### Frontend前端
+
+### `src/components/`
+
+Contains all React components:包含所有 React 组件：
+
+- **App.js**: The main component that manages state, routing, and renders child components.
+    
+    **App.js** ：管理状态、路由和渲染子组件的主要组件。
+    
+- **Navbar.js**: Provides navigation links to different pages.
+    
+    **Navbar.js** ：提供不同页面的导航链接。
+    
+- **SimulationControl.js**: Provides the UI for users to start/stop the simulation and set parameters.
+    
+    **SimulationControl.js** ：为用户提供启动/停止模拟和设置参数的 UI。
+    
+- **Stocks.js**: A page component that displays stocks and their price charts.
+    
+    **Stocks.js** ：显示股票及其价格图表的页面组件。
+    
+- **StocksList.js**: Displays a list of stocks with their current prices and charts.
+    
+    **StocksList.js** ：显示股票列表及其当前价格和图表。
+    
+- **StockPriceChart.js**: Visualizes the stock price history using a line chart.
+    
+    **StockPriceChart.js** ：使用折线图可视化股票价格历史记录。
+    
+- **Autoplayers.js**: A page component that displays autoplayers and their portfolios.
+    
+    **Autoplayers.js** ：显示自动播放器及其组合的页面组件。
+    
+- **AutoplayerList.js**: Shows the list of autoplayers and their portfolios.
+    
+    **AutoplayerList.js** ：显示自动播放器及其组合的列表。
+    
+- **OverviewData.js**: (Placeholder) Can be used to display aggregated market data.
+    
+    **OverviewData.js** ：（占位符）可用于显示汇总的市场数据。
+    
+
+### `src/index.js`
+
+Renders the main `App` component into the DOM and includes Bootstrap CSS.将主`App`组件渲染到 DOM 中并包含 Bootstrap CSS。
+
+---
+
+## API EndpointsAPI端点
+
+### **POST** `/api/start`**POST** `/api/start`
+
+Starts the simulation with user-defined parameters.使用用户定义的参数开始模拟。
+
+- **Request Body**:**请求正文**：
+    
+    ```json
+    {
+      "amountOfEachStockSharesRangeMin": 100000,
+      "amountOfEachStockSharesRangeMax": 1000000,
+      "newAutoplayerAmountRangeMin": 2,
+      "newAutoplayerAmountRangeMax": 10,
+      "stockPerShareIssuePriceRangeMin": 50,
+      "stockPerShareIssuePriceRangeMax": 200,
+      "autoplayerInitialCashAmountRangeMin": 50000,
+      "autoplayerInitialCashAmountRangeMax": 200000,
+      "timeInterval": 5000
+    }
+    ```
+    
+- **Response**:**回复**：
+    
+    ```json
+    {
+      "message": "Simulation started"
+    }
+    ```
+    
+
+### **GET** `/api/stop`**获取**`/api/stop`
+
+Stops the simulation.停止模拟。
+
+- **Response**:**回复**：
+    
+    ```json
+    {
+      "message": "Simulation stopped"
+    }
+    ```
+    
+
+### **GET** `/api/data`**获取**`/api/data`
+
+Retrieves the current simulation data.检索当前的模拟数据。
+
+- **Response**:**回复**：
+    
+    ```json
+    {
+      "stocks": [
+        {
+          "id": 1,
+          "name": "StockA",
+          "currentPrice": 102.5,
+          "priceHistory": [100, 101, 102.5]
+        },
+        ...
+      ],
+      "autoplayers": [
+        {
+          "id": 1,
+          "name": "Player1",
+          "cash": 95000,
+          "portfolio": {
+            "1": {
+              "quantity": 50,
+              "positions": [...]
+            },
+            ...
+          }
+        },
+        ...
+      ],
+      "brokerage": {
+        "holdings": {
+          "1": 999950,
+          "2": 499800,
+          "3": 1997000
+        }
+      }
+    }
+    ```
+    
+
+### **POST** `/api/parameters`**POST** `/api/parameters`
+
+(If implemented) Updates simulation parameters.（如果已实现）更新模拟参数。
+
+---
+
+## Error Handling错误处理
+
+- **Invalid Parameters**: The backend validates user inputs and returns descriptive error messages if any required parameters are missing or invalid.**无效参数**：后端验证用户输入，如果任何必需的参数丢失或无效，则返回描述性错误消息。
+- **Simulation State**: Attempts to start an already running simulation or stop a non-running simulation result in error responses.**模拟状态**：尝试启动已运行的模拟或停止未运行的模拟会导致错误响应。
+- **Frontend Feedback**: Error messages from the backend are displayed to the user in the UI.**前端反馈**：来自后端的错误消息在 UI 中显示给用户。
+- **Network Errors**: The frontend handles fetch errors and informs the user of connectivity issues.**网络错误**：前端处理获取错误并通知用户连接问题。
+
+---
+
+## Future Enhancements未来的增强功能
+
+- **Data Visualization**: Enhance charts to display stock price movements and portfolio values over time with more interactive features.**数据可视化**：增强图表以通过更多交互功能显示股票价格变动和投资组合价值随时间的变化。
+- **User Authentication**: Allow users to save and load simulation configurations.**用户身份验证**：允许用户保存和加载模拟配置。
+- **Advanced Strategies**: Enable users to create custom strategies for autoplayers.**高级策略**：使用户能够为自动播放器创建自定义策略。
+- **Persistent Storage**: Implement a database to store simulation data for analysis and historical reference.**持久存储**：实现数据库来存储模拟数据以供分析和历史参考。
+- **Real-Time Updates**: Optimize data fetching and state management for smoother real-time updates.**实时更新**：优化数据获取和状态管理，实现更流畅的实时更新。
+
+---
+
+## Contributing贡献
+
+Contributions are welcome! Please fork the repository and submit a pull request with your changes. Ensure that your code adheres to the existing style and includes appropriate documentation.欢迎贡献！请分叉存储库并提交包含更改的拉取请求。确保您的代码遵循现有风格并包含适当的文档。
+
+---
+
+## License执照
+
+This project is licensed under the MIT License.该项目已获得 MIT 许可证的许可。
+
+---
+
+# Full Code
+
+Below is the complete code for all files in the backend and frontend, incorporating all the requested features and updates, including the transition to React Router v6.下面是后端和前端所有文件的完整代码，包含所有请求的功能和更新，包括过渡到 React Router v6。
